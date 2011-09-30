@@ -1,0 +1,17 @@
+#menu
+  .container
+    #admin
+      = link_to "Frontpage", root_url
+
+    #customers
+      .customer
+        - if not defined? @current_controller or @current_controller.nil?
+          .block.first= menu_controller_select
+
+        - else
+          .block.first= menu_controller_select(@current_controller)
+
+        %fieldset.block
+          Welcome
+          %span= current_user.full_name
+          to the admin interface!

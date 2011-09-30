@@ -1,0 +1,29 @@
+#disastrously
+  .sidebar
+    .content
+      .title Incident Tracker
+      .text
+        Any anomalities, as well as planned service downtime (service
+        windows), are registered via our Incident Tracker and shown here on
+        the right.
+
+  .block
+    .content
+      .proxy= @group_future_service_windows
+      .footer= "Updated #{Time.now}"
+
+  .block
+    .content
+      .proxy= @group_past_service_windows
+      .footer= "Updated #{Time.now}"
+
+  .block
+    .content
+      .proxy= @group_past_incidents
+      .footer= "Updated #{Time.now}"
+
+  .block
+    .content
+      .proxy= @group_sla
+      .footer= "Updated #{Time.now}"
+

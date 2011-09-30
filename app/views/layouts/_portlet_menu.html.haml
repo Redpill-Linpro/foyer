@@ -1,0 +1,29 @@
+- if @current_customer and @current_customer.portlet_relations.size > 1
+  %fieldset#portlet_menu
+    .container
+      - portlets = @current_customer.portlet_relations.sort_by { |rel| rel.priority }
+
+      - while portlets.any?
+        -#
+          The number of times is controlled by the stylesheet @
+          app/stylesheets/screen.sass under .portlet (and .portlet.last)
+        - 5.times do
+
+          - if relation = portlets.shift
+            - if relation.title == @portlet.title
+              .portlet.selected
+                .inner= I18n.t @portlet.title, :default => @portlet.title
+
+            - else
+              .portlet
+                .inner= link_to I18n.t(relation.title, :default => relation.title), "/" + [@current_customer.name, relation.title].join('/')
+
+        -# Not very DRY, but the last portlet needs to be .portlet.last
+        - if relation = portlets.shift
+          - if relation.title == @portlet.title
+            .portlet.last.selected
+              .inner= I18n.t @portlet.title, :default => @portlet.title
+
+          - else
+            .portlet.last
+              .inner= link_to I18n.t(relation.title, :default => relation.title), "/" + [@current_customer.name, relation.title].join('/')

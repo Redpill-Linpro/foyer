@@ -1,0 +1,7 @@
+# This file contains the ldap string that is used to give users admin rights.
+# It is used by an external script during synchronisation with ldap.
+staging:
+  admin: "lc=something"
+
+production:
+  admin: "lc=something"

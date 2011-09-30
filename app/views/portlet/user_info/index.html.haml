@@ -1,0 +1,41 @@
+- show_admins = false
+
+#user_info
+  .sidebar
+    .content
+      .title User info
+      .text
+        There might be several different users that have access to the
+        information that is presented to you here. On the right there is a
+        list of all users, with contact information, that currently have access
+        to information about
+        = @customer.name
+
+      - if show_admins
+        .text
+          This system usually has several administrators. Administrators are
+          employees with access to all customers.
+
+  .block
+    .content
+      %h1= "List of users who have access to #{@customer.name} (#{@users.size})"
+
+      %table
+        - @users.sort_by{|user| user.list_name}.each do |user|
+          %tr
+            %td= user.list_name
+            %td= "(#{user.username})"
+            %td= user.email
+            %td= user.phonenumber
+
+    - if show_admins
+      .content
+        %h1= "List of administrators (#{@admin_users.size})"
+
+        %table
+          - @admin_users.sort_by{|user| user.list_name}.each do |user|
+            %tr
+              %td= user.list_name
+              %td= "(#{user.username})"
+              %td= user.email
+              %td= user.phonenumber

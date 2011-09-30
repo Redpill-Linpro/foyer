@@ -1,0 +1,11 @@
+-# Define a unique id
+- id = %{ajax_loader_#{Time.now.to_f}}
+
+%div{ :id => id, :style => "display: none" }
+  = image_tag("small_roller.gif")
+
+  -#
+    This ensures that the loader won't be displayed unless javascript is
+    actually activated
+  = javascript_tag(%{document.getElementById('#{id}').style.display = 'block';})
+

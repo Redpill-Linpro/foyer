@@ -1,0 +1,34 @@
+# General configuration options.
+# Names prefixed with a colon are converted to symbols.
+
+:portal:
+  :name: Customer Portal
+
+:users:
+  :authentication_method: http_auth
+
+:portlets:
+
+  :disastrously:
+    :host: disastrouslyhost
+    :port: 80
+    :auth:
+      :username: username
+      :password: password
+    :personal_paths:
+      :past_incidents: /export/past/personal/incidents/
+      :past_servicewindows: /export/past/personal/service_windows/
+      :future_servicewindows: /export/future/personal/service_windows/
+    :group_paths:
+      :past_incidents: /export/past/group/incidents/
+      :past_servicewindows: /export/past/group/service_windows/
+      :future_servicewindows: /export/future/group/service_windows/
+
+  :documentation:
+    # https / ssl
+    :host: mediawikihost
+    :port: 443
+    :path: /fetch.pl?key=
+    :auth:
+      :username: username
+      :password: password

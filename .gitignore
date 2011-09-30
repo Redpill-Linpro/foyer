@@ -1,0 +1,21 @@
+.*
+!.gitignore
+
+# Machine specific stuff:
+.bundle
+.vagrant
+
+log/
+tmp/
+
+config/database.yml
+config/general.yml
+
+# Generated stuff:
+coverage/
+public/stylesheets/compiled/
+
+public/blank.html
+public/images/active_scaffold/
+public/javascripts/active_scaffold/
+public/stylesheets/active_scaffold/

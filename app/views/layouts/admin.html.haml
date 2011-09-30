@@ -1,0 +1,36 @@
+!!! Strict
+
+%head
+  = render :partial => "layouts/head"
+
+  = active_scaffold_includes
+  = stylesheet_link_tag "compiled/active_scaffold_overrides", :media => "screen"
+
+  -# Include the css file for this layout:
+  = stylesheet_link_tag "compiled/layouts/admin.css", :media => "screen"
+
+  -# Include a css file with the same name as the controller, if it exists.
+  - if File.exists? "public/stylesheets/compiled/admin/#{controller.controller_name}.css"
+    = stylesheet_link_tag "compiled/admin/#{controller.controller_name}.css"
+
+  %title
+    Customer Portal - Admin
+    = "- #{@page_title}" if defined? @page_title
+
+%body
+  %fieldset#root.inner-shadow
+    %fieldset#header
+      #title.block
+        %h1= GENERAL[:portal][:name]
+
+    #menu-row.shadow
+      = render :partial => "layouts/admin_menu"
+
+    #content
+      = render :partial => "layouts/flash"
+      = yield
+
+    #last_before_footer
+
+  #footer
+    = render :partial => "layouts/footer"

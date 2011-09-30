@@ -1,0 +1,321 @@
+//
+  This file should be included in all layouts, as the first stylesheet.
+  Each layout has its own sass file in the layouts directory.
+
+//
+  Each controller will also include a sass file with the same name as the
+  controller, if there is such a file.
+
+@import partials/common.sass
+
+
+table
+  :width 100%
+
+th
+  :padding 0.3em
+
+td
+  :padding 0.4em
+
+p
+  :margin 0 0 1em
+
+// Reset indenting caused by fancy type
+body p + p
+  :text-indent 0
+  :margin-top 0
+
+ul, ol
+  :list-style-type none
+  :margin 0 0.5em 1em
+
+  a
+    :color inherit
+    :text-decoration none
+    &:hover
+      :color inherit
+      :text-decoration underline
+
+.exception
+  :background-color $rpl_black
+  :color white
+  :padding 4em
+  h1
+    :color white
+    :margin-bottom 1em
+  p + p
+    :margin-top -1em
+
+noscript
+  .content
+    //+clearfix
+    :padding 2em
+    :text-align center
+
+table
+  // No automatic bottom margin, thank you.
+  :margin-bottom 0
+
+#forbidden
+  :background-color black
+  :color white
+  :font-size large
+  :font-weight bold
+
+  :padding 5% 30%
+
+  .title
+    :font-size x-large
+    :margin-bottom 1em
+
+=customer_select
+  :padding 0.3em 1em
+
+=topline
+  :background-color $rpl_red
+  :color white
+  a
+    :color white
+
+=alt
+  :font-family "Warnock Pro","Goudy Old Style","Palatino","Book Antiqua",Georgia,serif
+  :font-style italic
+  :font-weight normal
+
+select
+  :margin 0
+
+// Mostly relevant for the menu:
+ul, ol
+  :list-style-type none
+  :margin 0 0.5em 1em
+
+li
+  hr
+    margin: 0.75em 0
+    height: 1px
+
+hr
+  //+colruler
+  :height 1px
+  :background-color #ddd
+  :border medium none
+
+hr.space
+  :background-color white
+  //+colspacer
+
+fieldset
+  border: none
+  padding: 0
+  margin-top: 0
+  margin-bottom: 0
+
+  a
+    :color $rpl_black
+    :text-decoration none
+    &:hover
+      :text-decoration underline
+
+.container
+  overflow: hidden
+  margin: 0 auto
+  width: 90%
+
+body
+  // This is actually the properties of the footer.
+  :background-color $rpl_dark_gray
+  :color white
+
+  // We like it fancy, but we like it 100% also.
+  :font-size 100%
+
+  #root
+    :background-color white
+    :color black
+    :min-height 55em
+
+    #header
+      :padding-top 2em
+      :padding-bottom 2em
+
+      #title
+        //+column(24, true)
+        //+prepend(6)
+        //+column(12, true)
+        :text-align center
+
+        h1
+          :font-style normal
+          :line-height 1.5em
+          :font-size 2.5em
+          :font-family helvetica
+          :font-weight bold
+          :margin 0
+
+      #logo
+        //+column(6, true)
+        :text-align right
+
+    #menu
+      +topline
+      :padding 1em 0
+
+      #admin
+        //
+          we need the position to be absolute so that #customers can ignore
+          it (thus allowing margin auto to work as it should)
+        :position absolute
+        :text-align right
+        a
+          :color white
+          :font-weight bold
+
+      #customers
+        .customer
+          //+column(0)
+          :width 37em
+          :margin auto
+          :display block
+          :font-weight bold
+          :text-align center
+          :float none
+
+          .block.first
+            :float left
+            :width 48%
+
+          select
+            +customer_select
+            :width 100%
+
+          ul
+            :margin 0
+            :background-color $rpl_dark_red
+
+          li
+            ul
+              //
+                the width here is kinda weird, but since it's in em, we know
+                it will match the li above it.
+              :width 16.8em
+              :position absolute
+              :display none
+              :background-color $rpl_dark_red
+              :padding 0.5em 0.5em
+              a
+                :color white
+
+            &:hover
+              :color $rpl_light_gray
+              > ul
+                :display block
+
+        .welcome
+          //+column(8, true)
+          span
+            :font-style italic
+
+    #portlet_menu
+      +topline
+      :background-color $rpl_dark_red
+      .portlet
+        :display inline
+        :float left
+
+        //+column(4)
+        :text-align center
+        .inner
+          :padding 0.5em 1.5em
+
+        &.last
+          //+column(4, "last")
+
+        &.selected
+          :background-color $rpl_dark_red * 0.95
+          :font-weight bold
+
+    #content
+      :margin-top 2em
+
+      #flash
+        :text-align center
+
+    #last_before_footer
+      :clear both
+
+  #footer
+    //+column(24, true)
+    :text-align center
+    +alt
+
+    :min-height 8em
+    :border-top 2em solid
+    :border-color $rpl_gray
+    :padding-top 2em
+
+    h4, h3, p, div
+      :color white
+      :margin-bottom 1em
+
+    h4
+      :font-style normal
+
+    h3
+      :font-weight bold
+
+    p
+      :margin-bottom 2em
+
+    a
+      :color lightblue
+      :text-decoration none
+      &:hover
+        :text-decoration underline
+
+    .text, .title
+      :margin-bottom 0.2em
+
+    .title
+      :font-weight bold
+
+    .country
+      //+column(8)
+      :display inline
+      :float left
+      :width 33.33%
+
+    .container
+      :margin-bottom 2em
+
+      a.contact_information
+        :display block
+        :margin-bottom 1em
+
+        :font-size xx-large
+        :font-weight bold
+        :color white
+
+    #finland, #denmark
+      //+last
+
+    #press, #foyer
+      :clear both
+
+      //+column(24, "last")
+      :margin-top 1.5em
+      .title
+        :margin-top 2em
+
+    #foyer
+      :margin-bottom 0
+      h4
+        :margin-bottom 0
+        :font-style italic
+        :font-size smaller
+
+//
+  make footer stick to the bottom of the page if the page is too short to fill
+  the whole screen:
+//+sticky-footer( "10em", "#root", "#last_before_footer", "#footer" )

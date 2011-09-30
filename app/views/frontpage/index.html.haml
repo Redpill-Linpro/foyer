@@ -1,0 +1,16 @@
+#frontpage
+  - if not @current_customer
+    = render :partial => "no_customers"
+
+  - elsif @current_customer.portlet_relations.empty?
+    = render :partial => "no_portlets"
+
+  - else
+    = render :partial => "shared/noscript"
+
+    - if @portlet
+
+      .portlet{ :id => "#{@portlet.portlet_name}_root"  }
+
+        = render :partial => "shared/ajax_loader"
+        = javascript_tag( remote_function( :update => "#{@portlet.portlet_name}_root", :url => "/portlet/#{@portlet.portlet_name}?portlet=#{@portlet.title}" ) )

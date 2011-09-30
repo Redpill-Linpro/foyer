@@ -1,0 +1,21 @@
+#menu
+  .container
+    #admin
+      - if current_user.role.can_administrate?
+        = link_to "Administration", admin_url
+
+      - else
+        &nbsp;
+
+    #customers
+      .customer
+        - if not defined? @current_customer or @current_customer.nil?
+          .block.first= menu_customer_select
+
+        - else
+          .block.first= menu_customer_select(@current_customer.name)
+
+        %fieldset.block
+          Welcome
+          %span= current_user.full_name
+          to our customer portal!

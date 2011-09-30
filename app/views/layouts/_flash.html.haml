@@ -1,0 +1,10 @@
+- if flash_messages.any?
+  #flash
+    - if flash_messages[:error]
+      .error= flash_messages[:error]
+
+    - if flash_messages[:warning]
+      .warning= flash_messages[:warning]
+
+    - if flash_messages[:notice]
+      .notice= flash_messages[:notice]

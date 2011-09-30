@@ -1,0 +1,43 @@
+@import partials/common.sass
+
+//
+  since the portlets will be displayed on the frontpage,
+  we need to include their sass file here.
+@import portlet/disastrously.sass
+@import portlet/documentation.sass
+@import portlet/user_info.sass
+
+=center-image
+  img
+    :display block
+    :margin auto
+
+.loading
+  +center-image
+
+p
+  :margin 0 0 1em
+
+#frontpage
+  .portlet
+    // make sure children are contained within the parent:
+    //+clearfix
+    :text-align center
+
+    :background-color white
+    :border-style none
+    //:border-width 1px
+    //:border-color = !rpl_light_gray
+
+  #nocustomers
+    :margin-top 10em
+    p
+      // strictly not needed to put this centered text in columns,
+      // but this will wrap it if it gets too wide.
+      //+prepend(8)
+      //+column(8)
+      //+alt
+      :text-align center
+      :text-indent 0
+      :font-size large
+      :padding-bottom 2em

@@ -1,0 +1,9 @@
+-#
+  This partial creates an inline javascript tag which does a request against
+  the disastrously controller locally and shows the result inline.
+
+#disastrously_ajax
+  .loading
+    = image_tag "small_roller.gif"
+
+= javascript_tag( remote_function( :update => :disastrously_ajax, :url => "/portlet/disastrously" ) )

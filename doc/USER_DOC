@@ -1,0 +1,32 @@
+============================
+User Documentation for Foyer
+============================
+
+.. contents::
+
+This document briefly explains key terms in Foyer.
+
+For information about development environment etc., see README_FOR_APP.
+
+
+Introduction
+============
+
+As of writing the Foyer application is a pretty small Rails application. It
+uses a plugin called 'admin_data' to create an interface that administrators
+can access through a link on the frontpage. Main concepts are **Users**,
+**Customers**, **Portlets** (and also **Roles**) and the relations
+between these.
+
+**Users** are people who can log into the application. Each user is
+associated with a **Role** which is used to decide access rules. So far there
+are only normal users and administrators, where administrators have access to
+the admin interface and normal users not.
+
+**Customers** are different companies. A user is associated with one or more
+customers, which gives the user access to the information gathered for that
+customer.
+
+The information available for each customer is decided by the different
+**Portlets** that are associated with them. Each portlet exposes some new
+information about a customer.

@@ -1,0 +1,34 @@
+!!! Strict
+
+%head
+  = render :partial => "layouts/head"
+
+  -# Include the css file for this layout:
+  = stylesheet_link_tag "compiled/layouts/standard.css", :media => "screen"
+
+  -# Include a css file with the same name as the controller, if it exists.
+  - if File.exists? "public/stylesheets/compiled/#{controller.controller_name}.css"
+    = stylesheet_link_tag "compiled/#{controller.controller_name}.css"
+
+  %title
+    Customer Portal
+    = "- #{@page_title}" if defined? @page_title
+
+%body
+  %fieldset#root.inner-shadow
+    %fieldset#header
+      #title.block
+        %h1= GENERAL[:portal][:name]
+
+    #menu-row.shadow
+      = render :partial => "layouts/menu"
+      = render :partial => "layouts/portlet_menu"
+
+    #content.container
+      = render :partial => "layouts/flash"
+      = yield
+
+    #last_before_footer
+
+  #footer
+    = render :partial => "layouts/footer"

@@ -1,0 +1,21 @@
+!!! Strict
+
+%head
+  = render :partial => "layouts/head"
+
+%body
+  %fieldset#root
+    %fieldset#header
+      #title.block
+        %h1= GENERAL[:portal][:name]
+
+    = render :partial => "layouts/forbidden_menu"
+
+    #content.container
+      = render :partial => "layouts/flash"
+      = yield
+
+    #last_before_footer
+
+  #footer
+    = render :partial => "layouts/footer"

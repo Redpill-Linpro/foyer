@@ -1,0 +1,66 @@
+@import partials/common.sass
+
+//
+  This file contains common css for the portlets.
+
+.portlet
+  // used by both sidebar and blocks
+  .title
+    :text-align left
+    :font-size x-large
+    :font-weight bold
+
+  // common sidebar
+  .sidebar
+    //+column(5, "last")
+    :display inline
+    :float left
+    :width 20%
+
+    :margin-bottom 2em
+    :color dimgray
+    .text
+      :padding 1em 0em 0em 1em
+      :text-align left
+      :font-size smaller
+
+  //
+    the blocks contain the actuall content and are placed to the right of the
+    sidebar.
+  .block
+    :display inline
+    :float right
+    :width 79%
+    //
+      if we use prepend(5) and column(19) instead of push and span, the block
+      actually ends up partially underneath our sidebar, which we don't want.
+    //+push(5)
+    //+span(19)
+    //+last
+    :margin-bottom 2em
+    // :padding 0em 0em 2em 2em
+
+    //
+      it's better to keep the content inside a div (inside our block), so
+      that we know that we will have room for e.g. borders (which can be
+      safely put on the content div, but not on the block div)
+    .content
+      :border none
+
+      :background-color white
+      :text-align left
+
+      // proxy contains the actual response proxied from somewhere else
+      .proxy
+        :min-height 10em
+
+      .text
+        :margin-bottom 1em
+
+      a
+        :color blue
+
+      h1
+        :font-size xx-large
+        :font-weight bold
+        :margin-bottom 1em

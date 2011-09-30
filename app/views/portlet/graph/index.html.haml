@@ -1,0 +1,15 @@
+#graphs
+
+  .block
+    .content
+      %h1= @portlet.title
+
+      .text= @portlet.text
+
+      - @portlet.url.split.each_with_index do |url, index|
+        .text
+          -#
+            Technically speaking, we're supposed to use the correct file ending
+            here (format). Hopefully, the browsers will just recognize the image
+            from the content type and render it regardless (heh)..
+          = image_tag url_for( :controller => "portlet/graph", :action => :show, :format => "png", :portlet => @portlet.title, :index => index ), :alt => @portlet.title
